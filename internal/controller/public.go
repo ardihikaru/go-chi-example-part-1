@@ -1,4 +1,4 @@
-package handler
+package controller
 
 import (
 	"net/http"
@@ -10,9 +10,9 @@ import (
 	"github.com/ardihikaru/go-chi-example-part-1/pkg/utils/http"
 )
 
-// PublicHandler handle public routes
-func PublicHandler(serviceId string, log *logger.Logger) http.Handler {
-	//func PublicHandler(serviceId string, log *logger.Logger, timeout time.Duration) http.Handler {
+// PublicController handle public routes
+func PublicController(serviceId string, log *logger.Logger) http.Handler {
+	//func PublicController(serviceId string, log *logger.Logger, timeout time.Duration) http.Handler {
 	r := chi.NewRouter()
 
 	r.Route("/", func(r chi.Router) {

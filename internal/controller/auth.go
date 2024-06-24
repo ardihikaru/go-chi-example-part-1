@@ -1,4 +1,4 @@
-package handler
+package controller
 
 import (
 	"net/http"
@@ -25,8 +25,8 @@ type authResponse struct {
 	Data       *auth.Token `json:"data,omitempty"`
 }
 
-// AuthHandler handles all authentication routes
-func AuthHandler(cfg *config.Config, log *logger.Logger, tokenAuth *jwtauth.JWTAuth) http.Handler {
+// AuthController handles all authentication routes
+func AuthController(cfg *config.Config, log *logger.Logger, tokenAuth *jwtauth.JWTAuth) http.Handler {
 	r := chi.NewRouter()
 
 	// initializes services
