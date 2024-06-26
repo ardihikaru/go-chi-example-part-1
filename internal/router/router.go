@@ -3,12 +3,12 @@
 package router
 
 import (
+	"github.com/ardihikaru/go-chi-example-part-1/internal/handler"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
 	httpSwagger "github.com/swaggo/http-swagger"
 
 	"github.com/ardihikaru/go-chi-example-part-1/internal/application"
-	"github.com/ardihikaru/go-chi-example-part-1/internal/controller"
 	"github.com/ardihikaru/go-chi-example-part-1/internal/service/middlewareutility"
 
 	"github.com/ardihikaru/go-chi-example-part-1/pkg/logger"
@@ -50,8 +50,8 @@ func buildTree(r *chi.Mux, deps *application.Dependencies) {
 	r.Mount("/swagger", httpSwagger.WrapHandler)
 
 	// handles service related route(s)
-	r.Mount("/public", controller.PublicController(deps.SvcId, deps.Log))
+	r.Mount("/public", handler.PublicController(deps.SvcId, deps.Log))
 
 	// handles auth related route(s)
-	r.Mount("/auth", controller.AuthController(deps.Cfg, deps.Log, deps.TokenAuth))
+	r.Mount("/auth", handler.AuthController(deps.Cfg, deps.Log, deps.TokenAuth))
 }
